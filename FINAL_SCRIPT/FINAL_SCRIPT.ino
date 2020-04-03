@@ -50,7 +50,6 @@ void setup() {
       delay(1000);
     }
   }
-
   Serial.println("connecting...");
   // if you get a connection, report back via serial:
   if (client.connect(server, port)) {
@@ -81,14 +80,14 @@ void loop() {
     }
   }
   if(!gps){
-    Serial.println("AGPS method");
+    Serial.println("GPRS method");
     unsigned long timeout = millis();
     while (millis() - timeout < 2000) {
       if (location.available() && location.accuracy() < 300 && location.accuracy() != 0) {
         root["longitude"] = String(location.longitude(),20);
         root["latitude"] = String(location.latitude(),20);
         root["altitude"] = String(location.altitude(),20);
-        root["method"] =  "AGPS";
+        root["method"] =  "GPRS";
       }
     }
   }
