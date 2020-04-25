@@ -76,6 +76,7 @@ void loop() {
       root["speed"] = GPS.speed();
       root["satellites"] = GPS.satellites();
       root["method"] = "GPS";
+      root["device"] = "poc";
       gps=true;
     }
   }
@@ -88,6 +89,7 @@ void loop() {
         root["latitude"] = String(location.latitude(),20);
         root["altitude"] = String(location.altitude(),20);
         root["method"] =  "GPRS";
+        root["device"] = "poc";
       }
     }
   }
