@@ -67,7 +67,7 @@ void setup() {
 void loop() {
   unsigned long wait = millis();
   bool gps = false;
-  while (millis() - wait < 2000 && !gps) {
+  while (millis() - wait < 3000 && !gps) {
     if(GPS.available()){
       Serial.println("GPS method");
       root["longitude"] = GPS.longitude();
@@ -83,7 +83,7 @@ void loop() {
   if(!gps){
     Serial.println("GPRS method");
     unsigned long timeout = millis();
-    while (millis() - timeout < 2000) {
+    while (millis() - timeout < 3000) {
       if (location.available() && location.accuracy() < 300 && location.accuracy() != 0) {
         root["longitude"] = String(location.longitude(),20);
         root["latitude"] = String(location.latitude(),20);
